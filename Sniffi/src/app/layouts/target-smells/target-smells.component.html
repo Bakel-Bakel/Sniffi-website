@@ -1,0 +1,113 @@
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Target Smells Configuration</h1>
+            </div>
+        </div>
+
+        <!-- Bot Selection Section -->
+        <div class="bot-selection">
+            <h3 class="bot-selection-title">Select Bots to Configure</h3>
+            <div class="bot-grid" id="bot-grid">
+                <div class="bot-item" data-bot-id="all">
+                    <div class="bot-name">All Bots</div>
+                    <div class="bot-id">Configure all devices</div>
+                    <div class="bot-status">6 devices</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN001">
+                    <div class="bot-name">Kitchen Monitor</div>
+                    <div class="bot-id">SN001</div>
+                    <div class="bot-status">Online</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN002">
+                    <div class="bot-name">Warehouse A</div>
+                    <div class="bot-id">SN002</div>
+                    <div class="bot-status">Online</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN003">
+                    <div class="bot-name">Lab Station 1</div>
+                    <div class="bot-id">SN003</div>
+                    <div class="bot-status">Online</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN004">
+                    <div class="bot-name">Parking Garage</div>
+                    <div class="bot-id">SN004</div>
+                    <div class="bot-status offline">Offline</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN005">
+                    <div class="bot-name">Storage Room B</div>
+                    <div class="bot-id">SN005</div>
+                    <div class="bot-status">Online</div>
+                </div>
+                <div class="bot-item" data-bot-id="SN006">
+                    <div class="bot-name">HVAC Monitor</div>
+                    <div class="bot-id">SN006</div>
+                    <div class="bot-status">Online</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Container (moved below bot selection, above categories) -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="search-input" placeholder="Search by name or formula...">
+        </div>
+
+        <div class="content-layout">
+            <!-- Categories Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <div class="category-list">
+                        <div class="category-item" data-category="toxic">
+                            <span>Toxic Gases</span>
+                            <span class="category-count">89</span>
+                        </div>
+                        <div class="category-item" data-category="flammable">
+                            <span>Flammable Gases</span>
+                            <span class="category-count">67</span>
+                        </div>
+                        <div class="category-item" data-category="corrosive">
+                            <span>Corrosive</span>
+                            <span class="category-count">34</span>
+                        </div>
+                        <div class="category-item" data-category="industrial">
+                            <span>Industrial Chemicals</span>
+                            <span class="category-count">78</span>
+                        </div>
+                        <div class="category-item" data-category="environmental">
+                            <span>Environmental</span>
+                            <span class="category-count">45</span>
+                        </div>
+                        <div class="category-item" data-category="solvents">
+                            <span>Solvents</span>
+                            <span class="category-count">28</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Targets Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Selected Targets</h3>
+                    <div class="selected-list" id="selected-list">
+                        <div class="selected-item">
+                            <div>
+                                <div class="selected-name">Carbon Monoxide</div>
+                                <div class="selected-formula">CO</div>
+                            </div>
+                            <button class="remove-btn">✕</button>
+                        </div>
+                        <div class="selected-item">
+                            <div>
+                                <div class="selected-name">Methane</div>
+                                <div class="selected-formula">CH4</div>
+                            </div>
+                            <button class="remove-btn">✕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

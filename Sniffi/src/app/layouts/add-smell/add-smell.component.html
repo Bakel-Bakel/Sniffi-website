@@ -1,0 +1,145 @@
+    <main class="main-content">
+        <div class="page-header">
+            <div class="page-title-section">
+                <h1>Smell Library Management</h1>
+                <p class="page-subtitle">Add and manage detectable smells for the SNIFFI robot fleet</p>
+            </div>
+        </div>
+
+        <!-- Add New Smell Form -->
+        <div class="add-smell-card">
+            <h2 class="card-title">Add New Smell</h2>
+            <form id="addSmellForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label" for="smellName">Smell Name</label>
+                        <input type="text" id="smellName" class="form-input" placeholder="e.g., Ammonia" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="chemicalFormula">Chemical Formula</label>
+                        <input type="text" id="chemicalFormula" class="form-input" placeholder="e.g., NH₃">
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label" for="category">Category</label>
+                        <select id="category" class="form-select" required>
+                            <option value="">Select Category</option>
+                            <option value="industrial">Industrial Gases</option>
+                            <option value="toxic">Toxic Substances</option>
+                            <option value="flammable">Flammable Gases</option>
+                            <option value="organic">Organic Compounds</option>
+                            <option value="environmental">Environmental</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea id="description" class="form-textarea" placeholder="Describe the smell, its properties, and detection context..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Sensor Recording Section -->
+                <div class="recording-section">
+                    <div class="recording-header">
+                        <div class="recording-title">Sensor Array Recording</div>
+                        <div class="sensor-status">
+                            <div class="status-indicator"></div>
+                            <span>Sensors Connected</span>
+                        </div>
+                    </div>
+
+                    <div class="recording-controls">
+                        <button type="button" class="record-btn" id="recordBtn" onclick="toggleRecording()">
+                            <div class="record-icon" id="recordIcon"></div>
+                            <span id="recordText">Record</span>
+                        </button>
+                        <div class="timer-display" id="timerDisplay">00:00</div>
+                    </div>
+
+                    <div class="recording-progress">
+                        <div class="progress-label">
+                            <span>Recording Progress</span>
+                            <span id="progressText">0% Complete</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                    </div>
+
+                    <div class="sensor-readings">
+                        <div class="sensor-reading">
+                            <div class="sensor-name">MQ-2</div>
+                            <div class="sensor-value" id="mq2Value">0.24</div>
+                        </div>
+                        <div class="sensor-reading">
+                            <div class="sensor-name">MQ-3</div>
+                            <div class="sensor-value" id="mq3Value">0.18</div>
+                        </div>
+                        <div class="sensor-reading">
+                            <div class="sensor-name">MQ-4</div>
+                            <div class="sensor-value" id="mq4Value">0.31</div>
+                        </div>
+                        <div class="sensor-reading">
+                            <div class="sensor-name">MQ-135</div>
+                            <div class="sensor-value" id="mq135Value">0.45</div>
+                        </div>
+                        <div class="sensor-reading">
+                            <div class="sensor-name">TGS-2600</div>
+                            <div class="sensor-value" id="tgs2600Value">0.22</div>
+                        </div>
+                        <div class="sensor-reading">
+                            <div class="sensor-name">BME680</div>
+                            <div class="sensor-value" id="bme680Value">0.67</div>
+                        </div>
+                    </div>
+
+                    <div class="recording-notes">
+                        <strong>Recording Instructions:</strong> Ensure the smell source is positioned 15-30cm from the sensor array. 
+                        Click "Record" to begin a 60-second sensor data capture. The recording will automatically complete after 1 minute.
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn" onclick="clearForm()">Clear</button>
+                    <button type="submit" class="btn btn-primary" id="addToLibraryBtn" disabled>Add to Library</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Smell Library -->
+        <div class="smells-library">
+            <div class="library-header">
+                <h2 class="card-title">Smell Library</h2>
+                <div class="search-filter">
+                    <input type="text" class="search-input" placeholder="Search smells..." id="searchInput">
+                    <select class="filter-select" id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="industrial">Industrial Gases</option>
+                        <option value="toxic">Toxic Substances</option>
+                        <option value="flammable">Flammable Gases</option>
+                        <option value="organic">Organic Compounds</option>
+                        <option value="environmental">Environmental</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalSmells">12</div>
+                    <div class="stat-label">Total Smells</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="activeTargets">8</div>
+                    <div class="stat-label">In Use</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="recentDetections">24</div>
+                    <div class="stat-label">Recent Detections</div>
+                </div>
+            </div>
+
+            <div class="smells-grid" id="smellsGrid">
+                <!-- Existing smells will be rendered here -->
+            </div>
+        </div>
+    </main>

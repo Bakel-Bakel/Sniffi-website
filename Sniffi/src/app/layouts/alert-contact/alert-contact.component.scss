@@ -1,0 +1,482 @@
+
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+/* Cards */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Form Elements */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    color: #000000;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+.form-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    color: #000000;
+    transition: border-color 0.2s ease;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #000000;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Days Selection */
+.days-selection {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.day-checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.day-checkbox:hover {
+    background-color: #f5f5f5;
+}
+
+.day-checkbox.selected {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.day-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.day-name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.day-time {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* Time Selection */
+.time-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Notification Method Selection */
+.notification-methods {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.method-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.method-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.method-option label {
+    font-size: 0.85rem;
+    color: #000000;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-primary {
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-primary:hover {
+    background-color: #333333;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #666666;
+    border-color: #e5e5e5;
+}
+
+.btn-secondary:hover {
+    background-color: #f5f5f5;
+    color: #000000;
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+}
+
+/* Contact List */
+.contact-list {
+    margin-top: 1rem;
+}
+
+.contact-item {
+    border: 1px solid #e5e5e5;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+}
+
+.contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.contact-info h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0.25rem;
+}
+
+.contact-info p {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 0.15rem;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.schedule-info {
+    padding-top: 0.75rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.schedule-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-details {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+}
+
+.status-badge.active {
+    background-color: #e8f5e8;
+    color: #2d5a2d;
+}
+
+.status-badge.inactive {
+    background-color: #f5f5f5;
+    color: #666666;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+    margin-bottom: 1rem;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #000000;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    font-size: 0.8rem;
+    color: #666666;
+    margin-left: 0.5rem;
+}
+
+/* Time Grid */
+.time-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.day-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-label {
+    font-size: 0.85rem;
+    color: #000000;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 2000;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.modal-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666666;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    color: #000000;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 1rem;
+    }
+
+    .nav-container {
+        padding: 0 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .time-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .time-slots {
+        grid-template-columns: 1fr;
+    }
+
+    .modal {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    .days-selection {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.25rem;
+    }
+
+    .notification-methods {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,161 @@
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Dashboard</h1>
+            <button class="target-btn" onclick="handleTargetClick()">Target</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Fleet Status Card -->
+            <div class="card fleet-status">
+                <div class="card-header">
+                    <h2 class="card-title">Fleet Status</h2>
+                </div>
+                <div class="card-value">4</div>
+                <div class="card-subtitle">Active Robots</div>
+                
+                <div class="robot-list">
+                    <div class="robot-item">
+                        <div>
+                            <div class="robot-name">SNIFFI-001</div>
+                            <div class="robot-location">Warehouse A, Zone 3</div>
+                        </div>
+                        <div class="robot-status">
+                            <span class="status-text">Online</span>
+                            <div class="status-indicator online"></div>
+                        </div>
+                    </div>
+                    <div class="robot-item">
+                        <div>
+                            <div class="robot-name">SNIFFI-002</div>
+                            <div class="robot-location">Factory Floor B</div>
+                        </div>
+                        <div class="robot-status">
+                            <span class="status-text">Online</span>
+                            <div class="status-indicator online"></div>
+                        </div>
+                    </div>
+                    <div class="robot-item">
+                        <div>
+                            <div class="robot-name">SNIFFI-003</div>
+                            <div class="robot-location">Storage Area C</div>
+                        </div>
+                        <div class="robot-status">
+                            <span class="status-text">Charging</span>
+                            <div class="status-indicator offline"></div>
+                        </div>
+                    </div>
+                    <div class="robot-item">
+                        <div>
+                            <div class="robot-name">SNIFFI-004</div>
+                            <div class="robot-location">Parking Area</div>
+                        </div>
+                        <div class="robot-status">
+                            <span class="status-text">Online</span>
+                            <div class="status-indicator online"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Map -->
+            <div class="card live-map">
+                <div class="card-header">
+                    <h2 class="card-title">Detection Map</h2>
+                </div>
+                
+                <div class="map-controls">
+                    <div class="control-group">
+                        <label class="control-label" for="dateFilter">Date:</label>
+                        <input type="date" id="dateFilter" class="date-input">
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="smellFilter">Target Smell:</label>
+                        <select id="smellFilter" class="smell-select">
+                            <option value="">All Detections</option>
+                            <option value="ammonia">Ammonia</option>
+                            <option value="methane">Methane</option>
+                            <option value="hydrogen-sulfide">Hydrogen Sulfide</option>
+                            <option value="carbon-monoxide">Carbon Monoxide</option>
+                            <option value="propane">Propane</option>
+                        </select>
+                    </div>
+                    <button class="reset-btn" onclick="resetFilters()">Reset</button>
+                </div>
+                
+                <div class="map-container">
+                    <!-- Robot markers -->
+                    <div class="robot-marker" style="top: 80px; left: 120px;" title="SNIFFI-001"></div>
+                    <div class="robot-marker" style="top: 200px; left: 280px;" title="SNIFFI-002"></div>
+                    <div class="robot-marker" style="top: 320px; left: 180px;" title="SNIFFI-004"></div>
+                    
+                    <!-- Gas detection clouds with enhanced labels -->
+                    <div class="gas-cloud" style="top: 60px; left: 100px; width: 60px; height: 60px;" data-smell="ammonia" data-date="2025-09-11">
+                        <div class="cloud-label">
+                            <div class="cloud-gas">Ammonia</div>
+                            <div class="cloud-time">2m ago</div>
+                            <div class="cloud-date">Sep 11, 14:32</div>
+                        </div>
+                    </div>
+                    <div class="gas-cloud" style="top: 180px; left: 260px; width: 80px; height: 80px;" data-smell="methane" data-date="2025-09-11">
+                        <div class="cloud-label">
+                            <div class="cloud-gas">Methane</div>
+                            <div class="cloud-time">7m ago</div>
+                            <div class="cloud-date">Sep 11, 14:27</div>
+                        </div>
+                    </div>
+                    <div class="gas-cloud" style="top: 120px; left: 350px; width: 65px; height: 65px;" data-smell="hydrogen-sulfide" data-date="2025-09-10">
+                        <div class="cloud-label">
+                            <div class="cloud-gas">H₂S</div>
+                            <div class="cloud-time">45m ago</div>
+                            <div class="cloud-date">Sep 10, 13:49</div>
+                        </div>
+                    </div>
+                    <div class="gas-cloud" style="top: 280px; left: 80px; width: 70px; height: 70px;" data-smell="carbon-monoxide" data-date="2025-09-10">
+                        <div class="cloud-label">
+                            <div class="cloud-gas">CO</div>
+                            <div class="cloud-time">1h ago</div>
+                            <div class="cloud-date">Sep 10, 13:34</div>
+                        </div>
+                    </div>
+                    <div class="gas-cloud" style="top: 240px; left: 320px; width: 55px; height: 55px;" data-smell="propane" data-date="2025-09-09">
+                        <div class="cloud-label">
+                            <div class="cloud-gas">Propane</div>
+                            <div class="cloud-time">2h ago</div>
+                            <div class="cloud-date">Sep 9, 12:34</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Detections -->
+            <div class="card recent-activity">
+                <div class="card-header">
+                    <h2 class="card-title">Recent Detections</h2>
+                </div>
+                
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-time">2 minutes ago</div>
+                        <div class="activity-text">Ammonia detected by <span class="activity-device">SNIFFI-001</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-time">7 minutes ago</div>
+                        <div class="activity-text">Methane detected by <span class="activity-device">SNIFFI-002</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-time">45 minutes ago</div>
+                        <div class="activity-text">Hydrogen Sulfide detected by <span class="activity-device">SNIFFI-004</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-time">1 hour ago</div>
+                        <div class="activity-text">Carbon Monoxide detected by <span class="activity-device">SNIFFI-001</span></div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-time">2 hours ago</div>
+                        <div class="activity-text">Propane detected by <span class="activity-device">SNIFFI-003</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

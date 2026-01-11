@@ -1,0 +1,200 @@
+ <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Device Management</h1>
+            </div>
+            <a href="#" class="assign-targets-btn">Assign Targets</a>
+        </div>
+
+        <div class="devices-layout">
+            <!-- Device List Sidebar -->
+            <div class="device-list">
+                <h3 class="device-list-header">Your Devices</h3>
+                
+                <div class="device-item selected" data-device="sniffi-001">
+                    <div class="device-name">SNIFFI-001</div>
+                    <div class="device-location">Warehouse A, Zone 3</div>
+                    <div class="device-status">
+                        <span>Online</span>
+                        <div class="status-indicator online"></div>
+                    </div>
+                </div>
+                
+                <div class="device-item" data-device="sniffi-002">
+                    <div class="device-name">SNIFFI-002</div>
+                    <div class="device-location">Factory Floor B</div>
+                    <div class="device-status">
+                        <span>Online</span>
+                        <div class="status-indicator online"></div>
+                    </div>
+                </div>
+                
+                <div class="device-item" data-device="sniffi-003">
+                    <div class="device-name">SNIFFI-003</div>
+                    <div class="device-location">Storage Area C</div>
+                    <div class="device-status">
+                        <span>Charging</span>
+                        <div class="status-indicator charging"></div>
+                    </div>
+                </div>
+                
+                <div class="device-item" data-device="sniffi-004">
+                    <div class="device-name">SNIFFI-004</div>
+                    <div class="device-location">Parking Area</div>
+                    <div class="device-status">
+                        <span>Online</span>
+                        <div class="status-indicator online"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Device Panel -->
+            <div class="device-panel">
+                <!-- Device Header -->
+                <div class="device-header">
+                    <div class="device-info">
+                        <div class="device-display">
+                            <h2 class="device-title" id="current-device-name">SNIFFI-001</h2>
+                            <p class="device-subtitle" id="current-device-location">Warehouse A, Zone 3</p>
+                        </div>
+                        <div class="edit-fields">
+                            <input type="text" class="edit-input" id="edit-name" placeholder="Device Name">
+                            <input type="text" class="edit-input" id="edit-location" placeholder="Location">
+                        </div>
+                    </div>
+                    
+                    <div class="device-actions">
+                        <button class="btn" id="edit-btn">Edit</button>
+                        <button class="btn" id="save-btn" style="display: none;">Save</button>
+                        <button class="btn" id="cancel-btn" style="display: none;">Cancel</button>
+                        <button class="btn primary" id="control-btn">Take Control</button>
+                    </div>
+                </div>
+
+                <!-- Map Section -->
+                <div class="map-section">
+                    <div class="map-header">
+                        <h3 class="map-title">Detection History Map</h3>
+                        <div class="gas-filter">
+                            <div class="gas-dropdown">
+                                <button class="dropdown-btn" id="gas-filter-btn">Show All</button>
+                                <div class="dropdown-content" id="gas-dropdown">
+                                    <div class="dropdown-item" data-gas="all">Show All</div>
+                                    <div class="dropdown-item" data-gas="NH3">NH3 Only</div>
+                                    <div class="dropdown-item" data-gas="CH4">CH4 Only</div>
+                                    <div class="dropdown-item" data-gas="CO">CO Only</div>
+                                    <div class="dropdown-item" data-gas="H2S">H2S Only</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="map-container" id="detection-map">
+                        <!-- Robot current position -->
+                        <div class="robot-marker" style="top: 200px; left: 300px;" id="robot-position"></div>
+                        
+                        <!-- Gas detections with timestamps -->
+                        <div class="gas-detection" style="top: 150px; left: 250px; width: 40px; height: 40px;" data-time="14:30" data-gas="NH3">NH3</div>
+                        <div class="gas-detection" style="top: 280px; left: 420px; width: 50px; height: 50px;" data-time="14:25" data-gas="CH4">CH4</div>
+                        <div class="gas-detection" style="top: 180px; left: 380px; width: 35px; height: 35px;" data-time="14:15" data-gas="CO">CO</div>
+                        <div class="gas-detection" style="top: 320px; left: 200px; width: 45px; height: 45px;" data-time="14:05" data-gas="H2S">H2S</div>
+                        <div class="gas-detection" style="top: 120px; left: 350px; width: 30px; height: 30px;" data-time="13:50" data-gas="NH3">NH3</div>
+                    </div>
+                </div>
+
+                <!-- Timeline Controls -->
+                <div class="timeline-controls">
+                    <div class="timeline-left">
+                        <button class="timeline-btn" id="rewind">⏪</button>
+                        <button class="timeline-btn" id="play-pause">⏸️</button>
+                        <button class="timeline-btn" id="forward">⏩</button>
+                    </div>
+                    
+                    <div class="timeline-slider" id="timeline">
+                        <div class="timeline-progress">
+                            <div class="timeline-handle"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-right">
+                        <div class="timeline-time">
+                            <div id="current-time">14:30</div>
+                            <div style="font-size: 0.7rem; color: #999;">/ 15:00</div>
+                        </div>
+                        
+                        <div class="date-selector">
+                            <label style="font-size: 0.8rem; color: #666666;">Date:</label>
+                            <input type="date" class="date-input" id="date-selector" value="2024-09-09">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Control Panel Modal -->
+    <div class="overlay" id="control-overlay"></div>
+    <div class="control-panel" id="control-panel">
+        <div class="control-header">
+            <h3 class="control-title">Remote Control</h3>
+            <p class="control-subtitle">Live video feed and robot controls</p>
+        </div>
+        
+        <div class="control-content">
+            <!-- Video Feed -->
+            <div class="video-feed-container">
+                <div class="video-status">
+                    <span class="status-dot"></span>
+                    LIVE
+                </div>
+                <div class="video-placeholder">
+                    <div style="font-size: 1.2rem; margin-bottom: 1rem;">📹</div>
+                    <div>Front Camera Feed</div>
+                    <div style="font-size: 0.8rem; color: #cccccc; margin-top: 0.5rem;">
+                        Connecting to SNIFFI-001...
+                    </div>
+                </div>
+                <!-- In a real implementation, this would be replaced with actual video element -->
+                <!-- <video class="video-feed" autoplay muted></video> -->
+            </div>
+            
+            <!-- Control Section -->
+            <div class="control-section">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Robot Controls</h4>
+                    <p style="font-size: 0.8rem; color: #666666;">Use arrow keys or click buttons</p>
+                </div>
+                
+                <div class="control-grid">
+                    <div></div>
+                    <div class="control-btn" data-direction="forward">↑<br>Forward</div>
+                    <div></div>
+                    <div class="control-btn" data-direction="left">←<br>Left</div>
+                    <div class="control-btn" data-direction="stop">⏹<br>Stop</div>
+                    <div class="control-btn" data-direction="right">→<br>Right</div>
+                    <div></div>
+                    <div class="control-btn" data-direction="backward">↓<br>Backward</div>
+                    <div></div>
+                </div>
+                
+                <div class="facetime-section">
+                    <div class="facetime-toggle">
+                        <label>Enable FaceTime for Bystanders</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="facetime-toggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <p style="font-size: 0.8rem; color: #666666; margin-bottom: 1rem;">
+                        When enabled, people can request video calls to communicate with you while you control this robot.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="control-actions">
+            <button class="btn danger" id="end-control">End Control</button>
+            <button class="btn" id="minimize-control">Minimize</button>
+        </div>
+    </div>

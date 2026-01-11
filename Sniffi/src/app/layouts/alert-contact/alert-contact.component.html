@@ -1,0 +1,229 @@
+  <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">Alert Contacts</h1>
+        </div>
+
+        <!-- Add New Contact Card -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Add New Contact</h2>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="contactName">Contact Name</label>
+                        <input type="text" id="contactName" class="form-input" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contactRole">Role/Department</label>
+                        <input type="text" id="contactRole" class="form-input" placeholder="e.g., Safety Manager">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" class="form-input" placeholder="name@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contactPhone">Phone Number</label>
+                        <input type="tel" id="contactPhone" class="form-input" placeholder="+1 (555) 123-4567">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Notification Method</label>
+                    <div class="notification-methods">
+                        <div class="method-option">
+                            <input type="checkbox" id="emailMethod" checked>
+                            <label for="emailMethod">Email</label>
+                        </div>
+                        <div class="method-option">
+                            <input type="checkbox" id="phoneMethod">
+                            <label for="phoneMethod">Phone</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Available Days</label>
+                    <div class="days-selection">
+                        <div class="day-checkbox" onclick="toggleDay(this, 'monday')">
+                            <input type="checkbox" name="days" value="monday">
+                            <div class="day-name">MON</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'tuesday')">
+                            <input type="checkbox" name="days" value="tuesday">
+                            <div class="day-name">TUE</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'wednesday')">
+                            <input type="checkbox" name="days" value="wednesday">
+                            <div class="day-name">WED</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'thursday')">
+                            <input type="checkbox" name="days" value="thursday">
+                            <div class="day-name">THU</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'friday')">
+                            <input type="checkbox" name="days" value="friday">
+                            <div class="day-name">FRI</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'saturday')">
+                            <input type="checkbox" name="days" value="saturday">
+                            <div class="day-name">SAT</div>
+                        </div>
+                        <div class="day-checkbox" onclick="toggleDay(this, 'sunday')">
+                            <input type="checkbox" name="days" value="sunday">
+                            <div class="day-name">SUN</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Available Time Range</label>
+                    <div class="time-selection">
+                        <input type="time" id="startTime" class="form-input" value="08:00">
+                        <input type="time" id="endTime" class="form-input" value="18:00">
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="openScheduleModal()">Set Schedule & Save Contact</button>
+            </form>
+        </div>
+
+        <!-- Contact List -->
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Existing Contacts</h2>
+                <span style="color: #666666; font-size: 0.85rem;">3 contacts configured</span>
+            </div>
+            
+            <div class="contact-list">
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="contact-info">
+                            <h3>Sarah Johnson <span class="status-badge active">Active</span></h3>
+                            <p>Safety Manager</p>
+                            <!-- <p>sarah.johnson@company.com</p> -->
+                            <p>+1 (555) 123-4567</p>
+                            <p style="margin-top: 0.5rem;"><strong>Methods:</strong> Email, Phone</p>
+                        </div>
+                        <div class="contact-actions">
+                            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span class="toggle-label">Notifications</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked onchange="toggleNotifications('sarah', this)">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-small btn-secondary" onclick="editContact('sarah')">Edit</button>
+                                    <button class="btn btn-small btn-secondary" onclick="deleteContact('sarah')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-info">
+                        <div class="schedule-label">Notification Schedule:</div>
+                        <div class="schedule-details">Monday-Friday: 8:00 AM - 6:00 PM | Weekend: Emergency Only</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="contact-info">
+                            <h3>Mike Rodriguez <span class="status-badge active">Active</span></h3>
+                            <p>Plant Supervisor</p>
+                            <!-- <p>mike.rodriguez@company.com</p> -->
+                            <p>+1 (555) 987-6543</p>
+                            <p style="margin-top: 0.5rem;"><strong>Methods:</strong> Email</p>
+                        </div>
+                        <div class="contact-actions">
+                            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span class="toggle-label">Notifications</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked onchange="toggleNotifications('mike', this)">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-small btn-secondary" onclick="editContact('mike')">Edit</button>
+                                    <button class="btn btn-small btn-secondary" onclick="deleteContact('mike')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-info">
+                        <div class="schedule-label">Notification Schedule:</div>
+                        <div class="schedule-details">24/7 Available</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <div class="contact-info">
+                            <h3>Emergency Response Team <span class="status-badge inactive">Inactive</span></h3>
+                            <p>Emergency Services</p>
+                            <!-- <p>emergency@company.com</p> -->
+                            <p>+1 (555) 911-0000</p>
+                            <p style="margin-top: 0.5rem;"><strong>Methods:</strong> Email, Phone</p>
+                        </div>
+                        <div class="contact-actions">
+                            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span class="toggle-label">Notifications</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" onchange="toggleNotifications('emergency', this)">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-small btn-secondary" onclick="editContact('emergency')">Edit</button>
+                                    <button class="btn btn-small btn-secondary" onclick="deleteContact('emergency')">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-info">
+                        <div class="schedule-label">Notification Schedule:</div>
+                        <div class="schedule-details">Currently Disabled</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Schedule Modal -->
+    <div class="modal-overlay" id="scheduleModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Confirm Schedule & Save Contact</h3>
+                <button class="close-btn" onclick="closeScheduleModal()">&times;</button>
+            </div>
+            
+            <div id="schedulePreview">
+                <div class="form-group">
+                    <label class="form-label">Schedule Summary</label>
+                    <div id="scheduleSummary" style="padding: 1rem; background-color: #f9f9f9; border: 1px solid #e5e5e5; font-size: 0.9rem; color: #666666;">
+                        <!-- Schedule summary will be populated here -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="emergencyOverride" class="checkbox" checked>
+                        <label for="emergencyOverride" class="checkbox-label">Override schedule for critical alerts</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeScheduleModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="saveContact()">Save Contact</button>
+            </div>
+        </div>
+    </div>

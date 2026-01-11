@@ -1,0 +1,226 @@
+<main class="main-content">
+        <!-- Selection Screen -->
+        <div id="selection-screen">
+            <div class="page-header">
+                <h1 class="page-title">Space Mapping</h1>
+                <p class="page-subtitle">Choose how you'd like to set up your space</p>
+            </div>
+
+            <div class="selection-screen">
+                <div class="option-card" id="add-new-map">
+                    <span class="option-icon">🗺️</span>
+                    <h2 class="option-title">Add New Map</h2>
+                    <p class="option-description">Use a Sniffi Patrol to remotely drive around and map a new space</p>
+                </div>
+
+                <div class="option-card" id="edit-existing-map">
+                    <span class="option-icon">✏️</span>
+                    <h2 class="option-title">Edit Existing Map</h2>
+                    <p class="option-description">Add virtual barriers to an existing mapped space</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Device Selection Screen -->
+        <div id="device-selection" class="device-selection">
+            <div class="page-header">
+                <h1 class="page-title">Select Sniffi Patrol</h1>
+                <p class="page-subtitle">Choose which device to use for mapping</p>
+            </div>
+
+            <button class="btn back-btn" id="back-to-selection">← Back to Selection</button>
+
+            <div class="device-list">
+                <div class="device-item" data-device="sniffi-001">
+                    <div class="device-status online"></div>
+                    <div class="device-info">
+                        <div class="device-name">SNIFFI-001</div>
+                        <div class="device-details">Online • Location: Warehouse A</div>
+                    </div>
+                    <div class="device-battery">
+                        <strong>87%</strong><br>Battery
+                    </div>
+                </div>
+
+                <div class="device-item" data-device="sniffi-002">
+                    <div class="device-status online"></div>
+                    <div class="device-info">
+                        <div class="device-name">SNIFFI-002</div>
+                        <div class="device-details">Online • Location: Storage Room B</div>
+                    </div>
+                    <div class="device-battery">
+                        <strong>92%</strong><br>Battery
+                    </div>
+                </div>
+
+                <div class="device-item" data-device="sniffi-004">
+                    <div class="device-status online"></div>
+                    <div class="device-info">
+                        <div class="device-name">SNIFFI-004</div>
+                        <div class="device-details">Online • Location: Main Floor</div>
+                    </div>
+                    <div class="device-battery">
+                        <strong>76%</strong><br>Battery
+                    </div>
+                </div>
+
+                <div class="device-item" style="opacity: 0.6; cursor: not-allowed;">
+                    <div class="device-status charging"></div>
+                    <div class="device-info">
+                        <div class="device-name">SNIFFI-003</div>
+                        <div class="device-details">Charging • Docking Station</div>
+                    </div>
+                    <div class="device-battery">
+                        <strong>34%</strong><br>Charging
+                    </div>
+                </div>
+
+                <div class="device-item" style="opacity: 0.6; cursor: not-allowed;">
+                    <div class="device-status offline"></div>
+                    <div class="device-info">
+                        <div class="device-name">SNIFFI-005</div>
+                        <div class="device-details">Offline • Last seen: 2 hours ago</div>
+                    </div>
+                    <div class="device-battery">
+                        <strong>--</strong><br>Unknown
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Map Interface -->
+        <div id="new-map-interface" class="mapping-interface">
+            <div class="page-header">
+                <h1 class="page-title">Remote Mapping</h1>
+                <p class="page-subtitle">Drive <span id="selected-device-name">SNIFFI-001</span> around to map the space</p>
+            </div>
+
+            <button class="btn back-btn" id="back-to-devices">← Back to Device Selection</button>
+
+            <div class="mapping-layout">
+                <div class="mapping-area">
+                    <div class="video-container">
+                        <div class="video-overlay">
+                            <div class="video-info">
+                                <span id="device-name-overlay">SNIFFI-001</span> • Live Feed
+                            </div>
+                            <div class="recording-indicator">
+                                <div class="recording-dot"></div>
+                                Recording Map
+                            </div>
+                        </div>
+                        <!-- Placeholder for video feed -->
+                        <div style="color: #666; text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📹</div>
+                            Live Camera Feed<br>
+                            <small>Video stream from selected Sniffi Patrol</small>
+                        </div>
+                    </div>
+
+                    <div class="controls-container">
+                        <div class="control-grid">
+                            <div></div>
+                            <button class="control-btn" id="forward">↑</button>
+                            <div></div>
+                            <button class="control-btn" id="left">←</button>
+                            <button class="control-btn center" id="stop">⏹</button>
+                            <button class="control-btn" id="right">→</button>
+                            <div></div>
+                            <button class="control-btn" id="backward">↓</button>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Mapping Instructions</h3>
+                        <p class="instruction-text">
+                            Use the directional controls to drive the robot around the space. The robot will automatically create a map as it moves. Make sure to:
+                        </p>
+                        <ul style="margin-top: 1rem; font-size: 0.85rem; color: #666666; padding-left: 1.5rem;">
+                            <li>Drive close to all walls and boundaries</li>
+                            <li>Move slowly for better accuracy</li>
+                            <li>Cover the entire area you want mapped</li>
+                            <li>Avoid obstacles and delicate equipment</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Mapping Progress</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                            <span>Area Covered:</span>
+                            <strong id="area-covered">1,250 sq ft</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.85rem;">
+                            <span>Recording Time:</span>
+                            <strong id="recording-time">12:34</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                            <span>Battery Remaining:</span>
+                            <strong id="battery-level">87%</strong>
+                        </div>
+                    </div>
+
+                    <button class="btn primary" id="finish-mapping">Finish Mapping</button>
+                    <button class="btn secondary" id="pause-mapping">Pause & Save</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Map Interface -->
+        <div id="edit-map-interface" class="mapping-interface">
+            <div class="page-header">
+                <h1 class="page-title">Edit Map - Add Virtual Barriers</h1>
+                <p class="page-subtitle">Draw lines where robots should not pass</p>
+            </div>
+
+            <button class="btn back-btn" id="back-to-selection-edit">← Back to Selection</button>
+
+            <div class="edit-mapping-layout">
+                <div class="mapping-area">
+                    <div class="edit-canvas" id="edit-canvas">
+                        <!-- Existing walls (faded) -->
+                        <div class="existing-walls">
+                            <div class="wall-line" style="top: 50px; left: 100px; width: 300px; height: 4px;"></div>
+                            <div class="wall-line" style="top: 50px; left: 100px; width: 4px; height: 200px;"></div>
+                            <div class="wall-line" style="top: 250px; left: 100px; width: 300px; height: 4px;"></div>
+                            <div class="wall-line" style="top: 50px; left: 400px; width: 4px; height: 200px;"></div>
+                            <div class="wall-line" style="top: 120px; left: 450px; width: 200px; height: 4px;"></div>
+                            <div class="wall-line" style="top: 120px; left: 650px; width: 4px; height: 150px;"></div>
+                            <div class="wall-line" style="top: 270px; left: 450px; width: 204px; height: 4px;"></div>
+                            <div class="wall-line" style="top: 120px; left: 450px; width: 4px; height: 150px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Virtual Barriers</h3>
+                        <p class="instruction-text">
+                            Click and drag on the map to draw red barrier lines. Robots will not cross these lines during patrol.
+                        </p>
+                        <p class="instruction-text" style="margin-top: 1rem;">
+                            Use barriers to block access to:
+                        </p>
+                        <ul style="margin-top: 0.5rem; font-size: 0.85rem; color: #666666; padding-left: 1.5rem;">
+                            <li>Dangerous equipment</li>
+                            <li>Sensitive areas</li>
+                            <li>Fragile items</li>
+                            <li>Private zones</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-section">
+                        <h3 class="sidebar-title">Current Barriers</h3>
+                        <div id="barrier-list">
+                            <p class="instruction-text">No barriers added yet</p>
+                        </div>
+                    </div>
+
+                    <button class="btn" id="clear-barriers">Clear All Barriers</button>
+                    <button class="btn primary" id="save-barriers">Save Barriers</button>
+                </div>
+            </div>
+        </div>
+    </main>
